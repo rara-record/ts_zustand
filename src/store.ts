@@ -33,10 +33,10 @@ export const addTodo = (todos: Todo[], text: string): Todo[] => [
 // zustand implementation
 type Store = {
   todos: Todo[];
-  newTodo: string
+  newTodo: string;
   addTodo: () => void;
   setNewTodo: (text: string) => void;
-}
+};
 
 const useStore = create<Store>((set) => ({
   todos: [],
@@ -45,7 +45,7 @@ const useStore = create<Store>((set) => ({
     set((state) => ({
       ...state,
       todos: addTodo(state.todos, state.newTodo),
-      newTodo: ''
+      newTodo: '',
     }));
   },
   setNewTodo(text: string) {
