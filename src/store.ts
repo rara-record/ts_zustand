@@ -34,17 +34,24 @@ type Store = {
   todos: Todo[];
   newTodo: string;
   setTodos: (todos: Todo[]) => void;
+  setNewTodo: (newTodo: string) => void;
   addTodo: () => void;
   updateTodo: (id: number, text: string) => void;
   removeTodo: (id: number) => void;
   toggleTodo: (id: number) => void;
-  setNewTodo: (newTodo: string) => void;
+  load: (todos: Todo[]) => void;
 };
 
 const useStore = create<Store>(
   (set): Store => ({
     todos: [],
     newTodo: '',
+    load(todos: Todo[]) {
+      set((state) => ({
+        ...state,
+        todos,
+      }));
+    },
     setTodos: (todos: Todo[]) =>
       set((state) => ({
         ...state,
